@@ -18,9 +18,13 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Orange40,
+    secondary = LightOrange40,
+    tertiary = DarkGray40,
+    background = White40,
+    onPrimary = Green40,
+    onSecondary = Red40,
+    onTertiary = RoyalBlue40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -37,7 +41,7 @@ private val LightColorScheme = lightColorScheme(
 fun AttendanceSystemTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

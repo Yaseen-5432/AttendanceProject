@@ -1,7 +1,6 @@
 package com.example.attendancesystem.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -27,31 +26,26 @@ val Typography = Typography(
         fontFamily = Rubikfont,
        fontWeight = FontWeight.Bold,
         fontSize = 26.sp,
-        color = Color.Black
     ),
     headlineLarge = TextStyle(
         fontFamily = Rubikfont,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp,
-        color = Color.Black
     ),
     bodyLarge = TextStyle(
         fontFamily = Rubikfont,
         fontWeight = FontWeight.Normal,
         fontSize = 20.sp,
-        color = Color.Black
     ),
     bodyMedium = TextStyle(
         fontFamily = Rubikfont,
         fontWeight = FontWeight.Normal,
         fontSize = 18.sp,
-        color = Color.Black
     ),
     bodySmall = TextStyle(
         fontFamily = Rubikfont,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        color = Color.Black
     ),
     /* Other default text styles to override
     titleLarge = TextStyle(

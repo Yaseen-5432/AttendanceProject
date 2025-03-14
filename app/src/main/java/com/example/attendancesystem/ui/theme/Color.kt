@@ -13,4 +13,3 @@ val Green40 = Color(0xFF00D800)
 val Red40 = Color(0xFFFF0000)
 val DarkGray40 = Color(0xFF848484)
 val White40 = Color(0xFFFFFFFF)
-val BlackColor = Color(0xFF000000) // Pure Black

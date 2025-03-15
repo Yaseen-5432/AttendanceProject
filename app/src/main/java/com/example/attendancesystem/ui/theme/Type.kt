@@ -37,7 +37,7 @@ val Typography = Typography(
     ),
     bodyLarge = TextStyle(
         fontFamily = Rubikfont,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
         color = Color.Black
     ),

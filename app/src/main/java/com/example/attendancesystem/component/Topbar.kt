@@ -1,5 +1,6 @@
 package com.example.attendancesystem.component
 
+import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
+
 @Composable
 fun ScafforldScreen(){
     Scaffold(
@@ -44,11 +46,10 @@ fun ScafforldScreen(){
 }
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScafforldScreen2(modifier: Modifier = Modifier){
-    var attend = remember { mutableStateListOf(0,0,0,0,0,0,0,0,0,0) }
-    var titlestate by remember { mutableStateOf("") }
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -67,8 +68,11 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
                     title = "Zubair Ahmad",
                     buttonText = "Submit"
                 ){
-                    titlestate = attend.joinToString(",")
+
                 }
+            }
+            item {
+                Callendar()
             }
 
             // List of Attendance Cards
@@ -80,11 +84,8 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
                     "Waqas Khizra"
                 )
                 AttendanceCard(rollNo = (index + 1).toString(), name = studentNames[index]){it->
-                    attend[index] = it
+
                 }
-            }
-            item {
-                Text(text = titlestate)
             }
         }
     }

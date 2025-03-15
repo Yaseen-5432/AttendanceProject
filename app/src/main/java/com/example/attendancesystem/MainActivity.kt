@@ -1,5 +1,6 @@
 package com.example.attendancesystem
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import com.example.attendancesystem.component.MyScreen
 import com.example.attendancesystem.ui.theme.AttendanceSystemTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

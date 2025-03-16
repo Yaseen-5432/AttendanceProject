@@ -47,11 +47,12 @@ fun Callendar(){
             .padding(8.dp)
             .fillMaxWidth()
             .border(2.dp, Color.Black),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
+
 
     ) {
         MonthSelector()
-        DateSelector()
+        ClassPercentage()
     }
 }
 
@@ -136,6 +137,70 @@ fun DateFinder(): List<String> {
     }
     return week
 
+}
+
+
+@Composable
+fun PrintCalendar(){
+    val daysList = MonthList()
+    val daysname = listOf("Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri")
+
+        Column(
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp,8.dp,18.dp,2.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            )  {
+                daysname.forEach {day->
+                    Text(
+                        text = day,
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(0.dp)
+                    )
+                }
+            }
+            for (l in 1..6){
+            Row {
+                for (i in 1..7) {
+                    val index = (l - 1) * 7 + (i - 1)
+                    Box(
+                        modifier = Modifier.size(50.dp)
+                            .background(MaterialTheme.colorScheme.onPrimary)
+                            .border(1.dp, Color.Black),
+                        contentAlignment = Alignment.Center,
+
+                    ){
+                        Text(text = daysList[index].dayOfMonth.toString(),
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.background)
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+@Composable
+fun MonthList(): List<LocalDate> {
+    val today = LocalDate.of(2025,4,15)
+    val firstDayOfMonth = today.withDayOfMonth(1)
+    val start = firstDayOfMonth.with(TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY))
+    val days = List(42) { index ->
+        start.plusDays(index.toLong())
+    }
+    return days
 }
 
 

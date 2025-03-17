@@ -1,0 +1,81 @@
+package com.example.attendancesystem.component
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+@Composable
+fun StudentForm() {
+    var studentName by remember { mutableStateOf("") }
+    var fatherName by remember { mutableStateOf("") }
+    var phoneNumber by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        InputField(label = "Enter Name:", value = studentName, onValueChange = { studentName = it })
+        Spacer(modifier = Modifier.height(8.dp))
+        InputField(label = "Enter Father Name:", value = fatherName, onValueChange = { fatherName = it })
+        Spacer(modifier = Modifier.height(8.dp))
+        InputField(label = "Enter Phone:", value = phoneNumber, onValueChange = { phoneNumber = it }, isPhone = true)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = { println("Submitted: $studentName, $fatherName, $phoneNumber") },
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
+            modifier = Modifier
+                .width(200.dp)
+                .height(80.dp)
+                .clip(RoundedCornerShape(14.dp))
+        ) {
+            Text("Submit", color = MaterialTheme.colorScheme.primary, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun InputField(label: String, value: String, onValueChange: (String) -> Unit, isPhone: Boolean = false) {
+    Column {
+        Text(text = label, fontSize = 20.sp, color = MaterialTheme.colorScheme.primary)
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            keyboardOptions = if (isPhone) KeyboardOptions(keyboardType = KeyboardType.Phone) else KeyboardOptions.Default,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(20.dp)),  // Rounded corners applied correctly
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = Color.Gray,
+                cursorColor = MaterialTheme.colorScheme.primary,
+                containerColor = MaterialTheme.colorScheme.secondary // Background color
+            )
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewStudentForm() {
+    StudentForm()
+}

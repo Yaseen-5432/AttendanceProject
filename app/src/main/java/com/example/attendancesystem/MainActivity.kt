@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import com.example.attendancesystem.component.PrintCalendar
 import com.example.attendancesystem.component.ScafforldScreen2
 import com.example.attendancesystem.component.MyScreen
+import com.example.attendancesystem.component.ScafforldScreen
 import com.example.attendancesystem.component.StudentForm
 import com.example.attendancesystem.ui.theme.AttendanceSystemTheme
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AttendanceSystemTheme {
-                ScafforldScreen2()
+                ScafforldScreen()
             }
         }
     }

@@ -12,23 +12,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = BlackColor,  // Primary black
+    //primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+    primary = BlackColor,  // Set primary color as black
+
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = BlackColor,      // Black as Primary
-    secondary = Orange40,      // Orange as Secondary
-    tertiary = LightOrange40,  // LightOrange as Tertiary
-    background = White40,      // White Background
-    onPrimary = Green40,       // Green text/icons on Primary
-    onSecondary = Red40,       // Red text/icons on Secondary
-    onTertiary = RoyalBlue40,  // Royal Blue text/icons on Tertiary
-    surface = DarkGray40       // DarkGray as Surface (optional, if needed)
-)
-
-
+    primary = Orange40,
+    secondary = LightOrange40,
+    tertiary = DarkGray40,
+    background = White40,
+    onPrimary = Green40,
+    onSecondary = Red40,
+    onTertiary = RoyalBlue40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -39,7 +37,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
     */
-
+)
 
 @Composable
 fun AttendanceSystemTheme(

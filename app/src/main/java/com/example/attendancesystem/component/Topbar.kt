@@ -2,8 +2,10 @@ package com.example.attendancesystem.component
 
 import android.os.Build
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -53,7 +55,7 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopBar(title = "Mark Attendance")
+            TopBar(title = "View Records")
         }
     ) {
         padding ->
@@ -65,31 +67,32 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
 
             item {
                 SecondBar(
-                    title = "Zubair Ahmad",
-                    buttonText = "Submit"
+                    title = "Select One",
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
                 ){
 
                 }
             }
             item {
-                Callendar()
+                MyScreen()
             }
-
-            // List of Attendance Cards
-            items(10) { index ->
-                val studentNames = listOf(
-                    "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
-                    "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
-                    "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
-                    "Waqas Khizra"
-                )
-                AttendanceCard(rollNo = (index + 1).toString(), name = studentNames[index]){it->
-
-                }
+//
+//            // List of Attendance Cards
+//            items(10) { index ->
+//                val studentNames = listOf(
+//                    "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
+//                    "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
+//                    "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
+//                    "Waqas Khizra"
+//                )
+//                Spacer(modifier = Modifier.height(20.dp))
+//               CustomButton(text = studentNames[index], roll = (index+1).toString())
+//
+//                }
             }
         }
     }
-}
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)

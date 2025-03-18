@@ -39,6 +39,9 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+
+
+
 @Composable
 fun AttendanceSystemTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

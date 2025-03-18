@@ -51,7 +51,7 @@ fun CustomButton(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal =
-                if (icon == null && roll == null) 20.dp else 2.dp
+                if (icon == null && roll == null) 36.dp else 18.dp
             ),
         contentPadding = PaddingValues(start = 16.dp),
         colors = ButtonDefaults.buttonColors(
@@ -107,43 +107,65 @@ fun MyScreen() {
     ) {
 
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(top = 16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CustomButton(
-                text = "Mark Attendance",
-                icon = Icons.Default.CheckCircle
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-
-            CustomButton(
-                text = "View Records",
-                icon = Icons.Default.Search
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-
-            CustomButton(
-                text = "Calculate Attendance",
-                icon = Icons.Default.DateRange
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-
-            CustomButton(
-                text = "Generate Reports",
-                icon = Icons.Default.AddCircle
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-
-            CustomButton(
-                text = "Manage Users",
-                icon = Icons.Default.AccountCircle
-            )
-//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Mark Attendance",
+//                icon = Icons.Default.CheckCircle
+//            )
+//            Spacer(modifier = Modifier.height(10.dp))
 //
 //            CustomButton(
-//                text = "Class 3",
+//                text = "View Records",
+//                icon = Icons.Default.Search
 //            )
+//            Spacer(modifier = Modifier.height(10.dp))
+//
+//            CustomButton(
+//                text = "Calculate Attendance",
+//                icon = Icons.Default.DateRange
+//            )
+//            Spacer(modifier = Modifier.height(10.dp))
+//
+//            CustomButton(
+//                text = "Generate Reports",
+//                icon = Icons.Default.AddCircle
+//            )
+//            Spacer(modifier = Modifier.height(10.dp))
+//
+//            CustomButton(
+//                text = "Manage Users",
+//                icon = Icons.Default.AccountCircle
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+            CustomButton(
+                text = "Class 1A",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            CustomButton(
+                text = "Class 1B",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            CustomButton(
+                text = "Class 1C",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            CustomButton(
+                text = "Class 2A",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            CustomButton(
+                text = "Class 2B",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            CustomButton(
+                text = "Class 3",
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+
         }
     }
 }

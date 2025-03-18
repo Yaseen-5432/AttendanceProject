@@ -55,7 +55,7 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopBar(title = "View Contacts")
+            TopBar(title = "Calculate Attendance")
         }
     ) {
         padding ->
@@ -67,14 +67,14 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
 
             item {
                 SecondBar(
-                    title = "Fill Data",
-                    //style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
+                    title = "Classes-(Select Class)",
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
                 ){
 
                 }
             }
             item {
-                StudentForm()
+                MyScreen()
             }
 //
 //            // List of Attendance Cards

@@ -10,6 +10,7 @@ import com.example.attendancesystem.component.ClassPercentage
 import com.example.attendancesystem.component.PrintCalendar
 import com.example.attendancesystem.component.ScafforldScreen2
 import com.example.attendancesystem.component.MyScreen
+import com.example.attendancesystem.component.ScafforldScreen
 import com.example.attendancesystem.component.StudentForm
 import com.example.attendancesystem.ui.theme.AttendanceSystemTheme
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AttendanceSystemTheme {
-             AttendanceCalculator()
+                ScafforldScreen()
             }
         }
     }

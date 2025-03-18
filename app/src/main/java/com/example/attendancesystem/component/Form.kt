@@ -10,6 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,7 +27,7 @@ fun StudentForm() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(top = 60.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -38,14 +40,17 @@ fun StudentForm() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { println("Submitted: $studentName, $fatherName, $phoneNumber") },
-            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
+            onClick = {  },
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
-                .width(200.dp)
-                .height(80.dp)
+                .padding(8.dp)
                 .clip(RoundedCornerShape(14.dp))
         ) {
-            Text("Submit", color = MaterialTheme.colorScheme.primary, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Text("Submit",
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                )
         }
     }
 }
@@ -54,20 +59,29 @@ fun StudentForm() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputField(label: String, value: String, onValueChange: (String) -> Unit, isPhone: Boolean = false) {
-    Column {
-        Text(text = label, fontSize = 20.sp, color = MaterialTheme.colorScheme.primary)
-        OutlinedTextField(
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+        .padding(horizontal = 30.dp),
+        horizontalAlignment = Alignment.Start
+    ) {
+        Text(text = label,
+                style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
+            )
+        TextField(
             value = value,
             onValueChange = onValueChange,
             keyboardOptions = if (isPhone) KeyboardOptions(keyboardType = KeyboardType.Phone) else KeyboardOptions.Default,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(20.dp)),  // Rounded corners applied correctly
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = MaterialTheme.colorScheme.primary,
-                unfocusedBorderColor = Color.Gray,
+                .clip(RoundedCornerShape(20.dp)),  // Rounded corners applied correctly,
+
+            colors = TextFieldDefaults.textFieldColors(
                 cursorColor = MaterialTheme.colorScheme.primary,
-                containerColor = MaterialTheme.colorScheme.secondary // Background color
+                containerColor = MaterialTheme.colorScheme.secondary, // Background color
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Transparent,
+
             )
         )
         Spacer(modifier = Modifier.height(16.dp))

@@ -33,7 +33,7 @@ fun ClassPercentage(){
                 .background((MaterialTheme.colorScheme.primary),RoundedCornerShape(10.dp))
                 .padding(horizontal = 8.dp, vertical = 4.dp)
         ) {
-            Text("90%", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+            Text("100%", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
         }
     }
 }

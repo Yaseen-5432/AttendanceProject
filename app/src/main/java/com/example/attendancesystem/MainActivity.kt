@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.example.attendancesystem.component.AttendanceCalculator
+import com.example.attendancesystem.component.ClassPercentage
 import com.example.attendancesystem.component.PrintCalendar
 import com.example.attendancesystem.component.ScafforldScreen2
 import com.example.attendancesystem.component.MyScreen

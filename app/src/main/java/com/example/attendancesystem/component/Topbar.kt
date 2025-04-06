@@ -55,7 +55,7 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopBar(title = "Calculate Attendance")
+            MainTopBar()
         }
     ) {
         padding ->
@@ -65,14 +65,14 @@ fun ScafforldScreen2(modifier: Modifier = Modifier){
                 .fillMaxSize()
         ) {
 
-            item {
-                SecondBar(
-                    title = "Classes-(Select Class)",
-                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
-                ){
-
-                }
-            }
+//            item {
+//                SecondBar(
+//                    title = "Classes-(Select Class)",
+//                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
+//                ){
+//
+//                }
+//            }
             item {
                 MyScreen()
             }

@@ -56,40 +56,4 @@ fun StudentForm() {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InputField(label: String, value: String, onValueChange: (String) -> Unit, isPhone: Boolean = false) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-        .padding(horizontal = 30.dp),
-        horizontalAlignment = Alignment.Start
-    ) {
-        Text(text = label,
-                style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
-            )
-        TextField(
-            value = value,
-            onValueChange = onValueChange,
-            keyboardOptions = if (isPhone) KeyboardOptions(keyboardType = KeyboardType.Phone) else KeyboardOptions.Default,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(20.dp)),  // Rounded corners applied correctly,
 
-            colors = TextFieldDefaults.textFieldColors(
-                cursorColor = MaterialTheme.colorScheme.primary,
-                containerColor = MaterialTheme.colorScheme.secondary, // Background color
-                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-                unfocusedIndicatorColor = Color.Transparent,
-
-            )
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewStudentForm() {
-    StudentForm()
-}

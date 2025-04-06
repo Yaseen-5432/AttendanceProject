@@ -32,146 +32,86 @@ fun AttendanceCalculator() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(top = 60.dp),
     ) {
         Text(
             text = "Select Date to Calculate",
             style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-        Text(
-            text = "Start Date:",
-            style = MaterialTheme.typography.bodyLarge
-        )
-        TextField(
-            value = startDate,
-            onValueChange = { startDate = it },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .background(
-                    color = MaterialTheme.colorScheme.secondary,
-                    shape = RoundedCornerShape(30.dp)
-                ),
-            shape = RoundedCornerShape(30.dp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.secondary,
-                unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
-                cursorColor = MaterialTheme.colorScheme.primary,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            trailingIcon = {
-                Box(
-                    modifier = Modifier
-                        .size(50.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.background)
-                        .padding(8.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.DateRange,
-                        contentDescription = "Select Date",
-                        tint = Color.Black,
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-            }
+            modifier = Modifier.padding(horizontal = 30.dp)
         )
 
 
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            text = "End Date:",
-            style = MaterialTheme.typography.bodyLarge
-        )
-        TextField(
-            value = endDate,
-            onValueChange = { endDate = it },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .background(
-                    color = MaterialTheme.colorScheme.secondary,
-                    shape = RoundedCornerShape(30.dp)
-                ),
-            shape = RoundedCornerShape(30.dp),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.secondary,
-                unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
-                cursorColor = MaterialTheme.colorScheme.primary,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            trailingIcon = {
-                Box(
-                    modifier = Modifier
-                        .size(50.dp)
-                        .clip(CircleShape)  
-                        .background(MaterialTheme.colorScheme.background)
-                        .padding(8.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.DateRange,
-                        contentDescription = "Select Date",
-                        tint = Color.Black, 
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-            }
-        )
 
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(
-            onClick = { },
-            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(vertical = 16.dp)
-                .clip(RoundedCornerShape(14.dp))
+        Column(
+            modifier = Modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                "Calculate",
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Bold
+
+            Spacer(modifier = Modifier.height(20.dp))
+            InputField(
+                label = "Start Date:",
+                value = startDate,
+                onValueChange = { startDate = it },
+                isDateIcon = true
             )
-        }
+            Spacer(modifier = Modifier.height(8.dp))
+            InputField(
+                label = "End Date:",
+                value = endDate,
+                onValueChange = { endDate = it },
+                isDateIcon = true
+            )
 
-        Spacer(modifier = Modifier.height(50.dp))
 
-        // Result Box
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .border(
-                    1.dp,
-                    MaterialTheme.colorScheme.onBackground,
-                    shape = RoundedCornerShape(10.dp)
-                )
-                .background(
-                    MaterialTheme.colorScheme.background,
-                    shape = RoundedCornerShape(10.dp)
-                )
-                .padding(0.dp)
-        ) {
-            Column {
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { },
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .clip(RoundedCornerShape(14.dp))
+            ) {
                 Text(
-                    text = "Result:",
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.bodyLarge
+                    "Calculate",
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+            }
 
-                // call the percentage function
-                ClassPercentage()
+            Spacer(modifier = Modifier.height(50.dp))
+
+            // Result Box
+            Box(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .fillMaxWidth()
+                    .border(
+                        1.dp,
+                        MaterialTheme.colorScheme.onBackground,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+                    .background(
+                        MaterialTheme.colorScheme.background,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+
+            ) {
+                Column {
+                    Text(
+                        text = "Result:",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(16.dp,16.dp,0.dp,0.dp)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    // call the percentage function
+                    ClassPercentage()
+                }
             }
         }
     }

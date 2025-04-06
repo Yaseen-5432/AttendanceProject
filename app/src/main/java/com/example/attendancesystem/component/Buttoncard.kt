@@ -111,67 +111,68 @@ fun MyScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-//            CustomButton(
-//                text = "Mark Attendance",
-//                icon = Icons.Default.CheckCircle
-//            )
-//            Spacer(modifier = Modifier.height(10.dp))
-//
-//            CustomButton(
-//                text = "View Records",
-//                icon = Icons.Default.Search
-//            )
-//            Spacer(modifier = Modifier.height(10.dp))
-//
-//            CustomButton(
-//                text = "Calculate Attendance",
-//                icon = Icons.Default.DateRange
-//            )
-//            Spacer(modifier = Modifier.height(10.dp))
-//
-//            CustomButton(
-//                text = "Generate Reports",
-//                icon = Icons.Default.AddCircle
-//            )
-//            Spacer(modifier = Modifier.height(10.dp))
-//
-//            CustomButton(
-//                text = "Manage Users",
-//                icon = Icons.Default.AccountCircle
-//            )
-//            Spacer(modifier = Modifier.height(20.dp))
-//
             CustomButton(
-                text = "Class 1A",
+                text = "Mark Attendance",
+                icon = Icons.Default.CheckCircle
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
             CustomButton(
-                text = "Class 1B",
+                text = "View Records",
+                icon = Icons.Default.Search
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
             CustomButton(
-                text = "Class 1C",
+                text = "Calculate Attendance",
+                icon = Icons.Default.DateRange
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
             CustomButton(
-                text = "Class 2A",
+                text = "Generate Reports",
+                icon = Icons.Default.AddCircle
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+
             CustomButton(
-                text = "Class 2B",
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            CustomButton(
-                text = "Class 3",
+                text = "Manage Users",
+                icon = Icons.Default.AccountCircle
             )
             Spacer(modifier = Modifier.height(20.dp))
 
+//            CustomButton(
+//                text = "Class 1A",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Class 1B",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Class 1C",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Class 2A",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Class 2B",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//            CustomButton(
+//                text = "Class 3",
+//            )
+//            Spacer(modifier = Modifier.height(20.dp))
+//
+//        }
         }
     }
 }
 
 
-@Preview(showBackground = true)
+
 @Composable
 fun PreviewMyScreen() {
     MyScreen()

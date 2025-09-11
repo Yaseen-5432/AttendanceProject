@@ -53,7 +53,8 @@ fun CustomButton(
             .padding(horizontal =
                 if (icon == null && roll == null) 36.dp else 18.dp
             ),
-        contentPadding = PaddingValues(start = 16.dp),
+            //changed start pading from 16 to 0
+        contentPadding = PaddingValues(0.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary
         ),
@@ -72,7 +73,7 @@ fun CustomButton(
                     tint = MaterialTheme.colorScheme.background,
                     contentDescription = "icon",
                     modifier = Modifier
-                        .padding(vertical = 16.dp)
+                        .padding(start = 16.dp)
                         .size(40.dp)
                         .clip(shape = CircleShape)
                         .background(MaterialTheme.colorScheme.primary)
@@ -124,7 +125,7 @@ fun MyScreen() {
             Spacer(modifier = Modifier.height(10.dp))
 
             CustomButton(
-                text = "Calculate Attendance",
+                text = "Calculate",
                 icon = Icons.Default.DateRange
             )
             Spacer(modifier = Modifier.height(10.dp))

@@ -44,7 +44,7 @@ fun MainTopBar(modifier: Modifier = Modifier) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .height(280.dp)
             .background(
                 color = MaterialTheme.colorScheme.primary, // Orange
                 shape = RoundedCornerShape(bottomStart = 100.dp, bottomEnd = 100.dp)
@@ -81,7 +81,7 @@ fun MainTopBar(modifier: Modifier = Modifier) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
 
-                            contentDescription = "Back Button",
+                            contentDescription = "Menu Button",
                             modifier = Modifier
                                 .size(30.dp),
                             tint = MaterialTheme.colorScheme.background
@@ -105,7 +105,7 @@ fun MainTopBar(modifier: Modifier = Modifier) {
 
                     )
             }
-            Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -146,11 +146,11 @@ fun MainTopBar(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "01",
+                            text = "06",
                             style = MaterialTheme.typography.headlineMedium
                         )
                         Text(
-                            text = "February",
+                            text = "April",
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }

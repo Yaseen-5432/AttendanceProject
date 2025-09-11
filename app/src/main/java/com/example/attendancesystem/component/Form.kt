@@ -19,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StudentForm() {
+fun StudentForm(modifier: Modifier = Modifier) {
     var studentName by remember { mutableStateOf("") }
     var fatherName by remember { mutableStateOf("") }
     var phoneNumber by remember { mutableStateOf("") }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(top = 60.dp),
         verticalArrangement = Arrangement.Center,

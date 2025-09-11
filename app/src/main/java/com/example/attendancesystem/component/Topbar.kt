@@ -37,61 +37,6 @@ import androidx.compose.ui.unit.dp
 
 
 
-@Composable
-fun ScafforldScreen(){
-    Scaffold(
-
-    ) {
-            padding ->
-        ScafforldScreen2(modifier = Modifier.padding(padding))
-    }
-}
-
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ScafforldScreen2(modifier: Modifier = Modifier){
-    Scaffold(
-        modifier = modifier,
-        topBar = {
-            MainTopBar()
-        }
-    ) {
-        padding ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize()
-        ) {
-
-//            item {
-//                SecondBar(
-//                    title = "Classes-(Select Class)",
-//                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold),
-//                ){
-//
-//                }
-//            }
-            item {
-                MyScreen()
-            }
-//
-//            // List of Attendance Cards
-//            items(10) { index ->
-//                val studentNames = listOf(
-//                    "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
-//                    "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
-//                    "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
-//                    "Waqas Khizra"
-//                )
-//                Spacer(modifier = Modifier.height(20.dp))
-//               CustomButton(text = studentNames[index], roll = (index+1).toString())
-//
-//                }
-            }
-        }
-    }
 
 
 

@@ -1,0 +1,12 @@
+package com.example.attendancesystem.domain.database.tables
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+// ClassEntity.kt
+
+@Entity(tableName = "classes")
+data class ClassEntity(
+    @PrimaryKey(autoGenerate = true) val classId: Int = 0,
+    val className: String // e.g., "1", "2", "3" ... "8"
+)

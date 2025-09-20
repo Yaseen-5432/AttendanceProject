@@ -25,8 +25,8 @@ interface StudentDao {
     suspend fun deleteStudent(studentEntity: StudentEntity)
 
     // Get all students of a section
-    @Query("SELECT * FROM students WHERE sectionId = :sectionId ORDER BY name ASC")
-    fun getStudentsBySection(sectionId: Int): Flow<List<StudentEntity>>
+    @Query("SELECT * FROM students WHERE classId = :classId ORDER BY studentId ASC")
+    fun getStudentsByClassPast(classId: Int): Flow<List<StudentEntity>>
 
     // Get a specific student by ID
     @Query("SELECT * FROM students WHERE studentId = :id LIMIT 1")
@@ -35,8 +35,17 @@ interface StudentDao {
     // Get all students (useful for admin view)
     @Query("SELECT * FROM students ORDER BY name ASC")
     fun getAllStudents(): Flow<List<StudentEntity>>
+    @Query("""
+    SELECT * FROM students 
+    WHERE studentId IN (
+        SELECT studentId FROM student_history 
+        WHERE classId = :classId
+    )
+    ORDER BY studentId ASC
+""")
+    fun getStudentsByClass(classId: Int): Flow<List<StudentEntity>>
 
     // Promote student: update sectionId (just call this in code)
-    @Query("UPDATE students SET sectionId = :newSectionId WHERE studentId = :studentId")
-    suspend fun promoteStudent(studentId: Int, newSectionId: Int)
+    @Query("UPDATE students SET classId = :newClassId WHERE studentId = :studentId")
+    suspend fun promoteStudent(studentId: Int, newClassId: Int)
 }

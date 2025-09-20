@@ -136,8 +136,7 @@ fun DateFinder(): List<String> {
 fun PrintCalendar(){
     val daysList = MonthList()
     val daysname = listOf("Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri")
-
-        Column(
+    Column(
             modifier = Modifier.fillMaxWidth()
                 .padding(horizontal = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,

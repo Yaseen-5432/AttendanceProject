@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.attendancesystem.domain.model.ClassWithSection
 import com.example.attendancesystem.domain.database.tables.ClassEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -31,11 +30,9 @@ interface ClassDao {
     @Query("SELECT * FROM classes WHERE classId = :id LIMIT 1")
     suspend fun getClassById(id: Int): ClassEntity?
 
-    @Query("""
-        SELECT c.className AS className, s.sectionName AS sectionName
-        FROM classes c
-        LEFT JOIN sections s ON c.classId = s.classId AND s.year = :year
-        ORDER BY c.className ASC, s.sectionName ASC
-    """)
-    fun getClassesWithSections(year: Int): Flow<List<ClassWithSection>>
+    @Query("SELECT * FROM classes WHERE year = :year ORDER BY classId ASC, className ASC")
+    fun getClassesForYear(year: Int): Flow<List<ClassEntity>>
+
+
+
 }

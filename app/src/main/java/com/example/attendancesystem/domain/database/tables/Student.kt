@@ -7,24 +7,14 @@ import androidx.room.PrimaryKey
 
 // StudentEntity.kt
 
-@Entity(
-    tableName = "students",
-    foreignKeys = [
-        ForeignKey(
-            entity = SectionEntity::class,
-            parentColumns = ["sectionId"],
-            childColumns = ["sectionId"],
-            onDelete = ForeignKey.SET_NULL
-        )
-    ],
-    indices = [Index(value = ["sectionId"])]
-)
+@Entity(tableName = "students",
+    indices = [Index(value = ["classId"])])
 data class StudentEntity(
     @PrimaryKey(autoGenerate = true) val studentId: Int = 0,
     val name: String,
     val fatherName: String,
-    val phone: String?,
-    val sectionId: Int?, // can be NULL if student is not assigned a class/section yet
+    val phoneNumber: String,
+    val classId: Int // always points to the student's *current* class
 )
 
 

@@ -5,13 +5,14 @@ import androidx.room.Room
 import com.example.attendancesystem.domain.database.AttendanceDatabase
 import com.example.attendancesystem.domain.database.dao.AttendanceDao
 import com.example.attendancesystem.domain.database.dao.ClassDao
-import com.example.attendancesystem.domain.database.dao.SectionDao
 import com.example.attendancesystem.domain.database.dao.StudentDao
+import com.example.attendancesystem.domain.database.dao.StudentHistoryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jakarta.inject.Singleton
+import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,11 +36,12 @@ object AppModule {
     fun provideClassDao(database: AttendanceDatabase): ClassDao =
         database.classDao()
 
-    @Provides
-    fun provideSectionDao(database: AttendanceDatabase): SectionDao =
-        database.sectionDao()
 
     @Provides
     fun provideStudentDao(database: AttendanceDatabase): StudentDao =
         database.studentDao()
+
+    @Provides
+    fun provideStudentHistoryDao(database: AttendanceDatabase): StudentHistoryDao =
+        database.studentHistoryDao()
 }

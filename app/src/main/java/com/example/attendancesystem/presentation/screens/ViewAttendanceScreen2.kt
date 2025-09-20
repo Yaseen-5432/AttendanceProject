@@ -18,6 +18,7 @@ import com.example.attendancesystem.presentation.component.TopBar
 
 @Composable
 fun ViewAttendanceScreen2(modifier: Modifier = Modifier,
+
 ){
     Scaffold(
         modifier = modifier,

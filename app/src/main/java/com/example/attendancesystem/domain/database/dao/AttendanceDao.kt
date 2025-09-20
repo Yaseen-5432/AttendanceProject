@@ -31,12 +31,32 @@ interface AttendanceDao {
 
     // Get attendance for all students in a section on a specific date
     @Query("""
-        SELECT a.* FROM attendance a
-        INNER JOIN students s ON a.studentId = s.studentId
-        WHERE s.sectionId = :sectionId AND a.date = :date
-        ORDER BY s.name ASC
-    """)
-    fun getAttendanceBySectionAndDate(sectionId: Int, date: Long): Flow<List<AttendanceEntity>>
+    SELECT a.attendanceId, s.studentId, s.name, a.date, a.status
+    FROM students s
+    LEFT JOIN attendance a 
+        ON a.studentId = s.studentId 
+        AND a.date = :date
+    WHERE s.classId = :classId
+    ORDER BY s.studentId ASC
+""")
+    fun getAttendanceWithStudentBySectionAndDatePast(classId: Int, date: Long): Flow<List<AttendanceWithStudent>>
+
+    @Query("""
+    SELECT a.attendanceId, s.studentId, s.name, a.date, a.status
+    FROM students s
+    LEFT JOIN student_history h 
+        ON h.studentId = s.studentId 
+        AND h.classId = :classId
+    LEFT JOIN attendance a 
+        ON a.studentId = s.studentId 
+        AND a.date = :date
+    WHERE s.classId = :classId OR h.classId = :classId
+    ORDER BY s.studentId ASC
+""")
+    fun getAttendanceWithStudentBySectionAndDate(
+        classId: Int,
+        date: Long
+    ): Flow<List<AttendanceWithStudent>>
 
     // All attendance rows for a student (history)
     @Query("SELECT * FROM attendance WHERE studentId = :studentId ORDER BY date DESC")
@@ -49,27 +69,43 @@ interface AttendanceDao {
     @Query("""
     SELECT a.* FROM attendance a
     INNER JOIN students s ON a.studentId = s.studentId
-    WHERE s.sectionId = :sectionId AND a.date BETWEEN :start AND :end
+    WHERE s.classId = :classId AND a.date BETWEEN :start AND :end
+    ORDER BY a.date ASC
+""")
+    fun getAttendanceBySectionBetweenDatesPast(
+        classId: Int,
+        start: Long,
+        end: Long
+    ): Flow<List<AttendanceEntity>>
+
+
+    @Query("""
+    SELECT a.* 
+    FROM attendance a
+    INNER JOIN students s ON a.studentId = s.studentId
+    LEFT JOIN student_history h ON h.studentId = s.studentId
+    WHERE (s.classId = :classId OR h.classId = :classId)
+      AND a.date BETWEEN :start AND :end
     ORDER BY a.date ASC
 """)
     fun getAttendanceBySectionBetweenDates(
-        sectionId: Int,
+        classId: Int,
         start: Long,
         end: Long
     ): Flow<List<AttendanceEntity>>
 
     @Query("""
-    SELECT s.studentId, s.name, a.date, a.status
-    FROM attendance a
-    INNER JOIN students s ON a.studentId = s.studentId
-    WHERE s.sectionId = :sectionId AND a.date BETWEEN :start AND :end
-    ORDER BY a.date ASC
+    SELECT * 
+    FROM attendance 
+    WHERE studentId = :studentId 
+      AND date BETWEEN :start AND :end
+    ORDER BY date ASC
 """)
-    fun getAttendanceWithStudentNames(
-        sectionId: Int,
+    fun getAttendanceByStudentBetweenDates(
+        studentId: Int,
         start: Long,
         end: Long
-    ): Flow<List<AttendanceWithStudent>>
+    ): Flow<List<AttendanceEntity>>
 
 
 }

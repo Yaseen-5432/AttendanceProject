@@ -1,10 +1,11 @@
 package com.example.attendancesystem.domain.model
 
-data class AttendanceWithStudent(
+import java.time.LocalDate
+
+data class AttendanceWithStudentUI(
     val attendanceId: Int,
     val studentId: Int,
     val name: String,
-    val date: Long,
+    val date: LocalDate,
     val status: Int
 )
-

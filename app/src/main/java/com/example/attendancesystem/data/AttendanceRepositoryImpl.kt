@@ -10,15 +10,19 @@ import kotlinx.coroutines.flow.Flow
 class AttendanceRepositoryImpl @Inject constructor(
     private val attendanceDao: AttendanceDao
 ): AttendanceRepository {
-    override fun getAttendanceBySectionAndDate(
+    override fun getAttendanceWithStudentBySectionAndDate(
         sectionId: Int,
         date: Long
-    ): Flow<List<AttendanceEntity>> {
-        return attendanceDao.getAttendanceBySectionAndDate(sectionId, date)
+    ): Flow<List<AttendanceWithStudent>> {
+        return attendanceDao.getAttendanceWithStudentBySectionAndDate(sectionId, date)
     }
 
     override suspend fun markAttendance(attendance: AttendanceEntity) {
         attendanceDao.insertAttendance(attendance)
+    }
+
+    override suspend fun insertAttendanceList(attendanceList: List<AttendanceEntity>) {
+        attendanceDao.insertAttendanceList(attendanceList)
     }
 
     override suspend fun deleteAttendanceForStudent(studentId: Int, date: Long) {
@@ -35,12 +39,12 @@ class AttendanceRepositoryImpl @Inject constructor(
     ): Flow<List<AttendanceEntity>> {
         return attendanceDao.getAttendanceBySectionBetweenDates(sectionId, start, end)
     }
-    override fun getAttendanceWithStudentNames(
-        sectionId: Int,
+    override fun getAttendanceByStudentBetweenDates(
+        studentId: Int,
         start: Long,
         end: Long
-    ): Flow<List<AttendanceWithStudent>> {
-        return attendanceDao.getAttendanceWithStudentNames(sectionId, start, end)
+    ): Flow<List<AttendanceEntity>> {
+        return attendanceDao.getAttendanceByStudentBetweenDates(studentId, start, end)
     }
 
     override fun getMonthlyReport(

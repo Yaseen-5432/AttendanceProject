@@ -13,4 +13,6 @@ interface AttendanceRepository {
     fun getAttendanceByStudent(studentId: Int): Flow<List<AttendanceEntity>>
     fun getAttendanceBySectionBetweenDates(sectionId: Int, start: Long, end: Long): Flow<List<AttendanceEntity>>
     fun getAttendanceByStudentBetweenDates(studentId: Int, start: Long, end: Long): Flow<List<AttendanceEntity>>
+    fun getAttendanceByClassOnDate(sectionId: Int, date: Long): Flow<List<AttendanceEntity>>
+
 }

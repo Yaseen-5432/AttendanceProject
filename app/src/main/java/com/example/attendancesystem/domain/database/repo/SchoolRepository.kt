@@ -11,4 +11,7 @@ interface SchoolRepository {
     suspend fun promoteStudent(studentId: Int, newClassId: Int)
     suspend fun insertClass(classEntity: ClassEntity)
     suspend fun insertStudent(studentEntity: StudentEntity)
+    // SchoolRepository.kt
+    fun getAllClasses(): Flow<List<ClassEntity>>
+
 }

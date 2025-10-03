@@ -64,5 +64,9 @@ class SchoolRepositoryImpl @Inject constructor(
             studentHistoryDao.insertHistory(newHistory)
         }
     }
+    override fun getAllClasses(): Flow<List<ClassEntity>> {
+        return classDao.getAllClasses()
+    }
+
 
 }

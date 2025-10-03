@@ -53,4 +53,8 @@ class AttendanceRepositoryImpl @Inject constructor(
     ): Flow<List<AttendanceEntity>> {
         TODO("Not yet implemented")
     }
+    override fun getAttendanceByClassOnDate(sectionId: Int, date: Long): Flow<List<AttendanceEntity>> {
+        return attendanceDao.getAttendanceByClassOnDate(sectionId, date)
+    }
+
 }

@@ -16,27 +16,37 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-
 @Composable
-fun ClassPercentage(){
+fun ClassPercentage(
+    percentage: String
+){
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center) {
-        Text("Attendance Percentage: ", style = MaterialTheme.typography.bodyLarge)
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Attendance Percentage: ",
+            style = MaterialTheme.typography.bodyLarge
+        )
         Box(
             modifier = Modifier
-                .background((MaterialTheme.colorScheme.primary),RoundedCornerShape(10.dp))
+                .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(10.dp))
                 .padding(horizontal = 8.dp, vertical = 4.dp)
         ) {
-            Text("100%", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+            Text(
+                text = percentage, // ✅ variable ka use
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
-@Preview
+
+@Preview(showBackground = true)
 @Composable
 fun PreviewClassPercentage() {
-    ClassPercentage()
+    ClassPercentage(percentage = "100%")
 }

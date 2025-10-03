@@ -15,34 +15,48 @@ import java.time.LocalDate
 class ClassViewmodel @Inject constructor(
     private val repository: SchoolRepository
 ): ViewModel() {
-    // Selected year state
+
+    // ✅ Selected year store karne ke liye
     private val _selectedYear = MutableStateFlow<Int?>(LocalDate.now().year)
     val selectedYear: StateFlow<Int?> = _selectedYear
 
-    private val _classes = MutableStateFlow<List< ClassEntity>>(emptyList())
+    // ✅ UI ke liye classes ka list state
+    private val _classes = MutableStateFlow<List<ClassEntity>>(emptyList())
     val classes: StateFlow<List<ClassEntity>> = _classes
 
-    // Set the year
+    // ✅ Year set karna aur uske hisaab se classes load karna
     fun setYear(year: Int) {
         _selectedYear.value = year
         loadClassesByYear(year)
     }
 
-    fun loadClassesByYear(year: Int) {
+    // ✅ Sirf ek particular year ki classes load karna
+     fun loadClassesByYear(year: Int) {
         viewModelScope.launch {
             repository.getClassesForYear(year).collect { list ->
+                println("DEBUG: Classes for $year loaded = ${list.size}") // 🔍 Debug log
                 _classes.value = list
             }
         }
     }
-    // Insert a new class
-    fun insertClass(classEntity: ClassEntity) {
+
+    // ✅ Saari classes bina year filter ke load karna
+    fun loadAllClasses() {
         viewModelScope.launch {
-            repository.insertClass(classEntity)
-            // Reload classes after inserting to update UI
-            loadClassesByYear(classEntity.year)
+            repository.getAllClasses().collect { list ->
+                println("DEBUG: All classes loaded = ${list.size}") // 🔍 Debug log
+                _classes.value = list
+            }
         }
     }
 
+    // ✅ Nai class insert karna aur refresh karna
+    fun insertClass(classEntity: ClassEntity) {
+        viewModelScope.launch {
+            repository.insertClass(classEntity)
+            // Insert ke baad usi year ki classes reload karenge
+            loadClassesByYear(classEntity.year)
+        }
+    }
 
 }

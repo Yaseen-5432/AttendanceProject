@@ -106,6 +106,14 @@ interface AttendanceDao {
         start: Long,
         end: Long
     ): Flow<List<AttendanceEntity>>
+    @Query("""
+    SELECT * 
+    FROM attendance a
+    INNER JOIN students s ON a.studentId = s.studentId
+    WHERE s.classId = :classId AND a.date = :date
+""")
+    fun getAttendanceByClassOnDate(classId: Int, date: Long): Flow<List<AttendanceEntity>>
+
 
 
 }

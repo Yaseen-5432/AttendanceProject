@@ -8,7 +8,8 @@ import com.example.attendancesystem.domain.database.repo.AttendanceRepository
 import com.example.attendancesystem.domain.database.tables.AttendanceEntity
 import com.example.attendancesystem.domain.model.AttendanceWithStudentUI
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
+//import jakarta.inject.Inject
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -149,6 +150,22 @@ class AttendanceViewmodel @Inject constructor(
     private fun updateWeekDays(date: LocalDate) {
         _weekDays.value = getWeekDates(date)
     }
+    fun loadClassAttendancePercentage(classId: Int, date: LocalDate) {
+        viewModelScope.launch {
+            repository.getAttendanceByClassOnDate(classId, date.toEpochMillis())
+                .collect { attendanceList ->
+                    if (attendanceList.isEmpty()) {
+                        _studentAttendancePercentage.value = 0f
+                    } else {
+                        val total = attendanceList.size
+                        val present = attendanceList.count { it.status == 0 }
+                        _studentAttendancePercentage.value = (present.toFloat() / total.toFloat()) * 100f
+                    }
+                }
+        }
+    }
+
+
 
 
 

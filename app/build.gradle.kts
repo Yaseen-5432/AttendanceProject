@@ -77,15 +77,6 @@ dependencies {
 
 // ✅ Hilt (DI)
     implementation(libs.hilt.android)
-    implementation(libs.androidx.runtime)
-    implementation(libs.places)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.runtime)
-    implementation(libs.androidx.navigation.common.ktx)
-    implementation(libs.androidx.foundation.layout)
-    implementation(libs.ui)
-    implementation(libs.navigation.compose)
-    implementation(libs.androidx.foundation)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 

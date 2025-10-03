@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.attendancesystem.presentation.component.ClassScreen
+import com.example.attendancesystem.presentation.screens.MainScreen
 import com.example.attendancesystem.ui.theme.AttendanceSystemTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,8 +32,6 @@ fun ScafforldScreen(){
 
     ) { 
             padding ->
-        ClassScreen(modifier = Modifier.padding(padding),
-             title = "Names"
-            )
+        MainScreen(modifier = Modifier.padding(padding))
     }
 }

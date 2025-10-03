@@ -1,3 +1,4 @@
+
 [versions]
 agp = "8.12.3"
 kotlin = "2.0.21"
@@ -23,8 +24,12 @@ foundationLayout = "1.9.2"
 ui = "1.9.2"
 navigationCompose = "2.9.5"
 foundation = "1.9.2"
+gson="2.10.1"
 
 [libraries]
+# ... existing libraries
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }  # ✅ Add this line
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

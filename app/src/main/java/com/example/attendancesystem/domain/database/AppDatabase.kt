@@ -1,7 +1,6 @@
 package com.example.attendancesystem.domain.database
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -43,7 +42,6 @@ abstract class AttendanceDatabase : RoomDatabase() {
 
         const val DATABASE_NAME = "attendance_db"
 
-        // ✅ Singleton database instance
         fun getDatabase(context: Context): AttendanceDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -54,6 +52,7 @@ abstract class AttendanceDatabase : RoomDatabase() {
                     .addCallback(object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
+                            // ✅ Use INSTANCE here instead of local 'instance'
                             CoroutineScope(Dispatchers.IO).launch {
                                 INSTANCE?.let { database ->
                                     prePopulateDatabase(context, database)
@@ -69,21 +68,17 @@ abstract class AttendanceDatabase : RoomDatabase() {
         }
 
 
-
-
-
-        // ✅ JSON file read karke prepopulate karne ka function (assets ke liye)
+        // ✅ Prepopulate database from assets/classes.json
         private suspend fun prePopulateDatabase(context: Context, db: AttendanceDatabase) {
             try {
-                // assets folder se file open karo
                 val inputStream = context.assets.open("classes.json")
                 val json = inputStream.bufferedReader().use { it.readText() }
 
-                // JSON ko List<ClassEntity> me convert karo
                 val type = object : TypeToken<List<ClassEntity>>() {}.type
                 val classList: List<ClassEntity> = Gson().fromJson(json, type)
 
-                // DAO ke through database me insert karo
+                println("DEBUG: Classes loaded from JSON = ${classList.size}") // 🔍 Debug
+
                 db.classDao().insertClasses(classList)
             } catch (e: Exception) {
                 e.printStackTrace()

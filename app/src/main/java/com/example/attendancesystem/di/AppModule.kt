@@ -15,26 +15,13 @@ import javax.inject.Singleton
 
 
 @Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
-
-    @Provides
-    @Singleton
-    fun provideDatabase(app: Application): AttendanceDatabase {
-        return Room.databaseBuilder(
-            app,
-            AttendanceDatabase::class.java,
-            AttendanceDatabase.DATABASE_NAME
-        ).build()
-    }
-
-   @Provides
-   fun provideAttendanceDao(database: AttendanceDatabase): AttendanceDao =
-       database.attendanceDao()
-
-    @Provides
-    fun provideClassDao(database: AttendanceDatabase): ClassDao =
-        database.classDao()
+@InstallIn
+    (SingletonComponent::class) object AppModule {
+        @Provides @Singleton fun provideDatabase(app: Application): AttendanceDatabase
+        { return Room.databaseBuilder( app, AttendanceDatabase::class.java,
+            AttendanceDatabase.DATABASE_NAME ).build() }
+    @Provides fun provideAttendanceDao(database: AttendanceDatabase): AttendanceDao = database.attendanceDao()
+    @Provides fun provideClassDao(database: AttendanceDatabase): ClassDao = database.classDao()
 
 
     @Provides

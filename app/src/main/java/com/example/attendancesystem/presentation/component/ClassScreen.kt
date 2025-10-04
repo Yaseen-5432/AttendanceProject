@@ -40,18 +40,60 @@ fun ClassScreen(
             ) { /* Optional action for top button */ }
 
             Spacer(modifier = Modifier.height(30.dp))
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
 
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                // Dynamic classes
-                items(classes.size) { index ->
-                    val classItem = classes[index]
-                    Spacer(modifier = Modifier.height(20.dp))
+//            item {
+//                {
+//
+//                }
+//            }
+                item {
 
                     CustomButton(
-                        text = classItem.className,
-                        onClick = { onButtonClick(classItem) } // ✅ proper callback
+                        text = "Class 1A",
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    CustomButton(
+                        text = "Class 1B",
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    CustomButton(
+                        text = "Class 1C",
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    CustomButton(
+                        text = "Class 2A",
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    CustomButton(
+                        text = "Class 2B",
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    CustomButton(
+                        text = "Class 3",
                     )
                 }
+
+            // List of Attendance Cards
+//            items(10) { index ->
+//                val studentNames = listOf(
+//                    "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
+//                    "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
+//                    "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
+//                    "Waqas Khizra"
+//                )
+//                Spacer(modifier = Modifier.height(20.dp))
+//               CustomButton(text = studentNames[index], roll = (index+1).toString())
+//
+//                }
             }
         }
     }

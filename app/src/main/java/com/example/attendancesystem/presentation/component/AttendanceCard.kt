@@ -35,12 +35,12 @@ fun AttendanceCard(
 modifier: Modifier = Modifier,
 name: String,
 rollNo: String,
-isPresent: Boolean,
+status: Int,
 onStatusChange: (Int) -> Unit
 )
 
 {
-    var colorState by rememberSaveable { mutableStateOf(0) }
+    var colorState by rememberSaveable { mutableStateOf(status) }
 
     Card(
         elevation = CardDefaults.cardElevation(4.dp),

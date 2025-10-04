@@ -16,12 +16,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+
+
+
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
     modifier: Modifier = Modifier,
-    title: String,
-    onBackClick: (() -> Unit)? = null   // 👈 back click support
+    title: String
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -36,27 +40,26 @@ fun TopBar(
                 modifier = Modifier.padding(start = 8.dp)
             )
         },
-        navigationIcon = {
-            onBackClick?.let {   // 👈 agar back click diya gaya hai to button dikhaye
-                IconButton(
-                    modifier = Modifier
-                        .padding(start = 16.dp)
-                        .size(30.dp),
-                    onClick = it   // ✅ yaha call hoga navController.popBackStack()
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back Button",
-                        modifier = Modifier.size(30.dp),
-                        tint = MaterialTheme.colorScheme.background
-                    )
+        navigationIcon ={
+            IconButton(
+                modifier = Modifier
+                    .padding(start = 16.dp)
+                    .size(30.dp),
+                onClick = {
+
                 }
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+
+                    contentDescription = "Back Button",
+                    modifier = Modifier
+                        .size(30.dp),
+                    tint = MaterialTheme.colorScheme.background
+                )
             }
+
         }
     )
+
 }
-
-
-
-
-

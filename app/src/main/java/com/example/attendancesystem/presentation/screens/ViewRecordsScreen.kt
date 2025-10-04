@@ -12,30 +12,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.example.attendancesystem.presentation.component.CustomButton
 import com.example.attendancesystem.presentation.component.SecondBar
 import com.example.attendancesystem.presentation.component.TopBar
-import com.example.attendancesystem.presentation.screens.classes.ClassViewmodel
-import com.example.attendancesystem.presentation.screens.student.StudentViewmodel
+
 
 @Composable
-fun ViewRecordsScreen(
-    navController: NavController,
-    modifier: Modifier = Modifier,
-    classViewModel: ClassViewmodel = hiltViewModel(),
-    studentViewModel: StudentViewmodel = hiltViewModel()
-) {
+fun ViewRecordsScreen(modifier: Modifier = Modifier,
+){
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopBar(
-                title = "View Records",
-                onBackClick = { navController.popBackStack() }   // ✅ back button handle
-            )
+            TopBar( title = "View Records")
         }
-    ) { padding ->
+    ) {
+            padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -45,45 +36,44 @@ fun ViewRecordsScreen(
                 title = "(Select One)",
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.SemiBold)
             ) {
-                // future actions if needed
+
             }
-
             Spacer(modifier = Modifier.height(30.dp))
-
             LazyColumn(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
             ) {
+
+//            item {
+//                {
+//
+//                }
+//            }
                 item {
-                    // ✅ Dynamic buttons for navigation
+
                     CustomButton(
                         text = "Attendance",
-                        onClick = { navController.navigate("view_attendance") },
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
                     CustomButton(
                         text = "Contacts",
-                        onClick = { navController.navigate("view_contacts") },
                     )
-                }
 
-                // -----------------------------
-                /*
-                items(10) { index ->
-                    val studentNames = listOf(
-                        "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
-                        "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
-                        "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
-                        "Waqas Khizra"
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    CustomButton(
-                        text = studentNames[index],
-                        roll = (index+1).toString()
-                    )
                 }
-                */
-                // -----------------------------
+//
+//            // List of Attendance Cards
+//            items(10) { index ->
+//                val studentNames = listOf(
+//                    "Zubair Ahmad", "Ibrahim Khan", "Umair Ashraf",
+//                    "Hafiz Faizan Sajjid", "Waqas Khizra", "Musa Bhai",
+//                    "Ibrahim Khan", "Zubair Ahmad", "Hafiz Faizan Sajjid",
+//                    "Waqas Khizra"
+//                )
+//                Spacer(modifier = Modifier.height(20.dp))
+//               CustomButton(text = studentNames[index], roll = (index+1).toString())
+//
+//                }
             }
         }
     }

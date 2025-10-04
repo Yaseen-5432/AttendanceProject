@@ -31,16 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AttendanceCard(
-modifier: Modifier = Modifier,
-name: String,
-rollNo: String,
-status: Int,
-onStatusChange: (Int) -> Unit
-)
-
-{
-    var colorState by rememberSaveable { mutableStateOf(status) }
+fun AttendanceCard(modifier: Modifier = Modifier,
+                   rollNo: String,
+                   name: String,
+                   onStatusChange: (Int) -> Unit
+){
+    var colorState by rememberSaveable { mutableStateOf(0) }
 
     Card(
         elevation = CardDefaults.cardElevation(4.dp),

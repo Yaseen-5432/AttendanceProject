@@ -103,7 +103,7 @@ fun MarkAttendanceScreen2(
                     AttendanceCard(
                         name = student.name,
                         rollNo = student.studentId.toString(),
-                        isPresent = (student.status == 1),
+                        status = student.status,
                         onStatusChange = { newStatusInt ->
                             viewModel.markAttendance(student.studentId, newStatusInt)
                         }

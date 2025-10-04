@@ -18,7 +18,7 @@ fun MarkAttendanceScreen1(
 ) {
     val classList by viewModel.classes.collectAsState()
     LaunchedEffect(Unit) {
-        viewModel.loadAllClasses()
+        viewModel.loadClassesByYear(LocalDate.now().year)
     }
 
     ClassScreen(

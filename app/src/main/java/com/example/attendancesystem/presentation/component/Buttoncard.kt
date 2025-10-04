@@ -33,27 +33,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 
 
 @Composable
 fun CustomButton(
     text: String,
     icon: ImageVector? = null,
-    roll: String? = null,
-    // phone: String? = null,   // 👈 ab optional kar diya
-    onClick: () -> Unit = {}
-
-
+    roll: String? = null
 ) {
     Button(
-        onClick = onClick,
+        onClick = {},
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal =
                 if (icon == null && roll == null) 36.dp else 18.dp
             ),
-
+            //changed start pading from 16 to 0
         contentPadding = PaddingValues(0.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary
@@ -87,12 +82,12 @@ fun CustomButton(
             else if (roll != null) {
                 RollIcon(roll)
             }
-            Text(
-                text = text,
-                style = if(icon==null && roll == null) MaterialTheme.typography.headlineLarge else MaterialTheme.typography.headlineMedium.copy(),
-                modifier = Modifier.padding(vertical = 16.dp)
+                Text(
+                    text = text,
+                    style = if(icon==null && roll == null) MaterialTheme.typography.headlineLarge else MaterialTheme.typography.headlineMedium.copy(),
+                    modifier = Modifier.padding(vertical = 16.dp)
 
-            )
+                )
 
         }
     }
@@ -101,7 +96,7 @@ fun CustomButton(
 
 
 @Composable
-fun MyScreen(navController: NavController) {
+fun MyScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -114,51 +109,31 @@ fun MyScreen(navController: NavController) {
         ) {
             CustomButton(
                 text = "Mark Attendance",
-                icon = Icons.Default.CheckCircle,
-                onClick = {
-                    navController.navigate("mark_attendance_1")   // ✅ navigate
-
-                }
+                icon = Icons.Default.CheckCircle
             )
             Spacer(modifier = Modifier.height(10.dp))
 
             CustomButton(
                 text = "View Records",
-                icon = Icons.Default.Search,
-                onClick = {
-                    navController.navigate("view_records")        // ✅ navigate
-
-                }
+                icon = Icons.Default.Search
             )
             Spacer(modifier = Modifier.height(10.dp))
 
             CustomButton(
-                text = "Calculate Attendance",
-                icon = Icons.Default.DateRange,
-                onClick = {
-                    navController.navigate("calculate_attendance") // ✅ navigate
-
-                }
+                text = "Calculate",
+                icon = Icons.Default.DateRange
             )
             Spacer(modifier = Modifier.height(10.dp))
 
             CustomButton(
                 text = "Generate Reports",
-                icon = Icons.Default.AddCircle,
-                onClick = {
-                    navController.navigate("reports")             // ✅ navigate
-
-                }
+                icon = Icons.Default.AddCircle
             )
             Spacer(modifier = Modifier.height(10.dp))
 
             CustomButton(
                 text = "Manage Users",
-                icon = Icons.Default.AccountCircle,
-                onClick = {
-                    navController.navigate("manage_users")        // ✅ navigate
-
-                }
+                icon = Icons.Default.AccountCircle
             )
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -193,8 +168,8 @@ fun MyScreen(navController: NavController) {
 }
 
 
-//@Preview
-//@Composable
-//fun PreviewMyScreen() {
-//  MyScreen()
-//}
+@Preview
+@Composable
+fun PreviewMyScreen() {
+    MyScreen()
+}

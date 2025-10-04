@@ -106,7 +106,7 @@ fun AttendanceCalculator() {
                     Spacer(modifier = Modifier.height(8.dp))
 
                     // call the percentage function
-                    ClassPercentage(percentage = "100%")
+                    ClassPercentage()
                 }
             }
         }

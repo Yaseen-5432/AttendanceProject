@@ -1,0 +1,32 @@
+//[
+//  {
+//    "historyId": 1,
+//    "studentId": 101,
+//    "classId": 1,
+//    "year": 2023
+//  },
+//  {
+//    "historyId": 2,
+//    "studentId": 101,
+//    "classId": 2,
+//    "year": 2024
+//  },
+//  {
+//    "historyId": 3,
+//    "studentId": 102,
+//    "classId": 1,
+//    "year": 2023
+//  },
+//  {
+//    "historyId": 4,
+//    "studentId": 103,
+//    "classId": 2,
+//    "year": 2023
+//  },
+//  {
+//    "historyId": 5,
+//    "studentId": 103,
+//    "classId": 3,
+//    "year": 2024
+//  }
+//]

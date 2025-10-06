@@ -1,0 +1,37 @@
+//[
+//  {
+//    "studentId": 101,
+//    "name": "Ali Ahmed",
+//    "fatherName": "Ahmed Khan",
+//    "phoneNumber": "03001234567",
+//    "classId": 1
+//  },
+//  {
+//    "studentId": 102,
+//    "name": "Sara Iqbal",
+//    "fatherName": "Iqbal Hussain",
+//    "phoneNumber": "03007654321",
+//    "classId": 1
+//  },
+//  {
+//    "studentId": 103,
+//    "name": "Hassan Raza",
+//    "fatherName": "Raza Karim",
+//    "phoneNumber": "03009876543",
+//    "classId": 2
+//  },
+//  {
+//    "studentId": 104,
+//    "name": "Fatima Noor",
+//    "fatherName": "Noor Muhammad",
+//    "phoneNumber": "03004561234",
+//    "classId": 2
+//  },
+//  {
+//    "studentId": 105,
+//    "name": "Usman Tariq",
+//    "fatherName": "Tariq Mehmood",
+//    "phoneNumber": "03007891234",
+//    "classId": 3
+//  }
+//]

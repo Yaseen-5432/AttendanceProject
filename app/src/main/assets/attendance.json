@@ -1,0 +1,38 @@
+//[
+//  {
+//    "attendanceId": 1,
+//    "studentId": 101,
+//    "date": 1727731200000,
+//    "status": 0
+//  },
+//  {
+//    "attendanceId": 2,
+//    "studentId": 102,
+//    "date": 1727731200000,
+//    "status": 1
+//  },
+//  {
+//    "attendanceId": 3,
+//    "studentId": 103,
+//    "date": 1727731200000,
+//    "status": 2
+//  },
+//  {
+//    "attendanceId": 4,
+//    "studentId": 101,
+//    "date": 1727817600000,
+//    "status": 0
+//  },
+//  {
+//    "attendanceId": 5,
+//    "studentId": 102,
+//    "date": 1727817600000,
+//    "status": 0
+//  },
+//  {
+//    "attendanceId": 6,
+//    "studentId": 103,
+//    "date": 1727817600000,
+//    "status": 1
+//  }
+//]

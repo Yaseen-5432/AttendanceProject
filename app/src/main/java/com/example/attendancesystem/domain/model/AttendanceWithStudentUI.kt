@@ -7,5 +7,5 @@ data class AttendanceWithStudentUI(
     val studentId: Int,
     val name: String,
     val date: LocalDate,
-    val status: Int
+    val status: Int?
 )

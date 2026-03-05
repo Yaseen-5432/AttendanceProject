@@ -16,9 +16,14 @@ class SchoolRepositoryImpl @Inject constructor(
     private val studentDao: StudentDao,
     private val studentHistoryDao: StudentHistoryDao
 ): SchoolRepository {
-    override fun getClassesForYear(year: Int): Flow<List<ClassEntity>> {
-        return classDao.getClassesForYear(year)
+    override fun getClasses(): Flow<List<ClassEntity>> {
+        return classDao.getAllClasses()
     }
+
+    override suspend fun sessionStart(classId: Int): Long? {
+        return studentHistoryDao.getSessionStartDateForClass(classId)
+    }
+
 
     override suspend fun getClassById(classId: Int): ClassEntity? {
         return classDao.getClassById(classId)
@@ -35,16 +40,19 @@ class SchoolRepositoryImpl @Inject constructor(
 
     override suspend fun insertStudent(studentEntity: StudentEntity) {
         studentDao.insertStudent(studentEntity)
-        val classEntity = classDao.getClassById(studentEntity.classId!!)
         val history = StudentHistoryEntity(
             studentId = studentEntity.studentId,
             classId = studentEntity.classId,
-            year = classEntity?.year ?: LocalDate.now().year,
+            joinDate = LocalDate.now().toEpochDay(),
         )
         studentHistoryDao.insertHistory(history)
     }
 
-    override suspend fun promoteStudent(studentId: Int, newClassId: Int) {
+    override suspend fun getStudentById(studentId: Int): StudentEntity? {
+        return studentDao.getStudentById(studentId)
+    }
+
+    override suspend fun promoteStudent(studentId: Int, newClassId: Int, joinDate: Long) {
         // 1. Update student's current class
         studentDao.promoteStudent(studentId, newClassId)
 
@@ -52,14 +60,14 @@ class SchoolRepositoryImpl @Inject constructor(
         val newClass = classDao.getClassById(newClassId) ?: return
 
         // 3. Check if history already exists for this student in this class & year
-        val existingHistory = studentHistoryDao.getStudentHistory(studentId, newClassId, newClass.year)
+        val existingHistory = studentHistoryDao.getStudentHistory(studentId, newClassId, joinDate)
 
         if (existingHistory == null) {
             // 4. Insert only if no duplicate exists
             val newHistory = StudentHistoryEntity(
                 studentId = studentId,
                 classId = newClassId,
-                year = newClass.year
+                joinDate = joinDate
             )
             studentHistoryDao.insertHistory(newHistory)
         }

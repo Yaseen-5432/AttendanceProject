@@ -37,7 +37,7 @@ class AttendanceRepositoryImpl @Inject constructor(
         start: Long,
         end: Long
     ): Flow<List<AttendanceEntity>> {
-        return attendanceDao.getAttendanceBySectionBetweenDates(sectionId, start, end)
+        return attendanceDao.getAttendanceByCurrentClassBetweenDates(sectionId, start, end)
     }
     override fun getAttendanceByStudentBetweenDates(
         studentId: Int,

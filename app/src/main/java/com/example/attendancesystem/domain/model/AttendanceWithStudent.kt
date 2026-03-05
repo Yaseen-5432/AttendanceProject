@@ -5,6 +5,6 @@ data class AttendanceWithStudent(
     val studentId: Int,
     val name: String,
     val date: Long,
-    val status: Int
+    val status: Int?
 )
 

@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 // ClassEntity.kt
 
 @Entity(tableName = "classes",
-    indices = [Index(value = ["year"])]
+    indices = [Index(value = ["classId"])]
 )
 data class ClassEntity(
     @PrimaryKey(autoGenerate = true) val classId: Int = 0,
     val className: String, // e.g., "1", "2", "3" ... "8"
-    val year: Int
 )

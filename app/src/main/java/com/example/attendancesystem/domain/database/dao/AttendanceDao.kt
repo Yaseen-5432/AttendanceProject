@@ -80,19 +80,19 @@ interface AttendanceDao {
 
 
     @Query("""
-    SELECT a.* 
+    SELECT a.*
     FROM attendance a
     INNER JOIN students s ON a.studentId = s.studentId
-    LEFT JOIN student_history h ON h.studentId = s.studentId
-    WHERE (s.classId = :classId OR h.classId = :classId)
+    WHERE s.classId = :classId
       AND a.date BETWEEN :start AND :end
     ORDER BY a.date ASC
 """)
-    fun getAttendanceBySectionBetweenDates(
+    fun getAttendanceByCurrentClassBetweenDates(
         classId: Int,
         start: Long,
         end: Long
     ): Flow<List<AttendanceEntity>>
+
 
     @Query("""
     SELECT * 
@@ -107,5 +107,6 @@ interface AttendanceDao {
         end: Long
     ): Flow<List<AttendanceEntity>>
 
-
+    @Query("SELECT COUNT(*) FROM attendance")
+    suspend fun count(): Int
 }

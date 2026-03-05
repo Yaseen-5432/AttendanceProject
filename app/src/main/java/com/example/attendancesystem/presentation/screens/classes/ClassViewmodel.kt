@@ -1,5 +1,6 @@
 package com.example.attendancesystem.presentation.screens.classes
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.attendancesystem.domain.database.repo.SchoolRepository
@@ -23,15 +24,14 @@ class ClassViewmodel @Inject constructor(
     val classes: StateFlow<List<ClassEntity>> = _classes
 
     // Set the year
-    fun setYear(year: Int) {
-        _selectedYear.value = year
-        loadClassesByYear(year)
-    }
 
-    fun loadClassesByYear(year: Int) {
+
+    fun loadClasses() {
+        Log.d("calculate", "loadClasses: called")
         viewModelScope.launch {
-            repository.getClassesForYear(year).collect { list ->
+            repository.getClasses().collect { list ->
                 _classes.value = list
+                Log.d("calculate", "loadClasses: ${list.size}")
             }
         }
     }
@@ -40,7 +40,7 @@ class ClassViewmodel @Inject constructor(
         viewModelScope.launch {
             repository.insertClass(classEntity)
             // Reload classes after inserting to update UI
-            loadClassesByYear(classEntity.year)
+            loadClasses()
         }
     }
 

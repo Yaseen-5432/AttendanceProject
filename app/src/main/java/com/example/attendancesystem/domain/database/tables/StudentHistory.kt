@@ -15,12 +15,12 @@ import androidx.room.PrimaryKey
         ),
         ForeignKey(entity = ClassEntity::class, parentColumns = ["classId"], childColumns = ["classId"])
     ],
-    indices = [Index(value = ["studentId"]), Index(value = ["classId"]), Index(value = ["year"])]
+    indices = [Index(value = ["studentId"]), Index(value = ["classId"]), Index(value = ["joinDate"])]
 )
 data class StudentHistoryEntity(
     @PrimaryKey(autoGenerate = true) val historyId: Int = 0,
     val studentId: Int,
     val classId: Int,
-    val year: Int // academic year of that old class
+    val joinDate: Long
 )
 

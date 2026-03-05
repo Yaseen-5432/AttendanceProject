@@ -34,10 +34,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopBar(modifier: Modifier = Modifier) {
+fun MainTopBar( Date: LocalDate, modifier: Modifier = Modifier) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -143,11 +144,11 @@ fun MainTopBar(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "06",
+                            text = Date.dayOfMonth.toString(),
                             style = MaterialTheme.typography.headlineMedium
                         )
                         Text(
-                            text = "April",
+                            text = Date.month.name,
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }

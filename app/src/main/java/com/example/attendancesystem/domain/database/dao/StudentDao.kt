@@ -36,11 +36,8 @@ interface StudentDao {
     @Query("SELECT * FROM students ORDER BY name ASC")
     fun getAllStudents(): Flow<List<StudentEntity>>
     @Query("""
-    SELECT * FROM students 
-    WHERE studentId IN (
-        SELECT studentId FROM student_history 
-        WHERE classId = :classId
-    )
+    SELECT * FROM students
+    WHERE classId = :classId
     ORDER BY studentId ASC
 """)
     fun getStudentsByClass(classId: Int): Flow<List<StudentEntity>>
@@ -48,4 +45,7 @@ interface StudentDao {
     // Promote student: update sectionId (just call this in code)
     @Query("UPDATE students SET classId = :newClassId WHERE studentId = :studentId")
     suspend fun promoteStudent(studentId: Int, newClassId: Int)
+
+    @Query("SELECT COUNT(*) FROM students")
+    suspend fun count(): Int
 }

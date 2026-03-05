@@ -23,7 +23,7 @@ interface StudentHistoryDao {
     @Query("""
         SELECT * FROM student_history 
         WHERE studentId = :studentId 
-        ORDER BY year ASC
+        ORDER BY joinDate ASC
     """)
     fun getHistoryForStudent(studentId: Int): Flow<List<StudentHistoryEntity>>
 
@@ -48,9 +48,14 @@ interface StudentHistoryDao {
     SELECT * FROM student_history 
     WHERE studentId = :studentId 
       AND classId = :classId 
-      AND year = :year
+      AND joinDate = :joinDate
     LIMIT 1
 """)
-    suspend fun getStudentHistory(studentId: Int, classId: Int, year: Int): StudentHistoryEntity?
+    suspend fun getStudentHistory(studentId: Int, classId: Int, joinDate: Long): StudentHistoryEntity?
 
+    @Query("SELECT MIN(joinDate) FROM student_history WHERE classId = :classId")
+    suspend fun getSessionStartDateForClass(classId: Int): Long?
+
+    @Query("SELECT COUNT(*) FROM student_history")
+    suspend fun count(): Int
 }

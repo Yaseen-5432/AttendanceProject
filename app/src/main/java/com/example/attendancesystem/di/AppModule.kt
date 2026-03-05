@@ -1,7 +1,6 @@
 package com.example.attendancesystem.di
 
 import android.app.Application
-import androidx.room.Room
 import com.example.attendancesystem.domain.database.AttendanceDatabase
 import com.example.attendancesystem.domain.database.dao.AttendanceDao
 import com.example.attendancesystem.domain.database.dao.ClassDao
@@ -21,11 +20,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDatabase(app: Application): AttendanceDatabase {
-        return Room.databaseBuilder(
-            app,
-            AttendanceDatabase::class.java,
-            AttendanceDatabase.DATABASE_NAME
-        ).build()
+        // Delegate to the singleton provider which also runs prepopulation once
+        return AttendanceDatabase.getDatabase(app)
     }
 
    @Provides

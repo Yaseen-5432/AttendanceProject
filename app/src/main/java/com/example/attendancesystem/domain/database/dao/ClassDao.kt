@@ -30,9 +30,6 @@ interface ClassDao {
     @Query("SELECT * FROM classes WHERE classId = :id LIMIT 1")
     suspend fun getClassById(id: Int): ClassEntity?
 
-    @Query("SELECT * FROM classes WHERE year = :year ORDER BY classId ASC, className ASC")
-    fun getClassesForYear(year: Int): Flow<List<ClassEntity>>
-
-
-
+    @Query("SELECT COUNT(*) FROM classes")
+    suspend fun count(): Int
 }
